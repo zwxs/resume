@@ -1,0 +1,1118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0050)http://www.webhek.com/post/interactive-resume.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href="http://www.webhek.com/apps/interactive-resume/">--><base href=".">
+
+<title>郑维的简历</title>
+<meta name="Description" content="程序员的求职简历应该体现出程序员的技术能力，但几乎所有的简历都是用文字表述的，为什么让简历载体自身成为体现程序员技能的平台呢？如果你还不明白我说的是什么意思，那就看看这个超级酷炫的HTML5互动式程序员求职简历，一定会让你惊异不已。">
+<link href="./超级酷炫的HTML5互动式程序员求职简历_files/style.css" rel="stylesheet" type="text/css">
+<style type="text/css" abt="234"></style><script>//console.log('a')
+</script><script>//remove 17173 video ad
+doAdblock();
+function doAdblock(){
+    (function() {
+        function A() {}
+        A.prototype = {
+            rules: {
+                '17173_in':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFile(Customer)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_in_20150522.swf"
+                },
+                '17173_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFileFirstpage\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_out_20150522.swf"
+                },
+                '17173_live':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream(_firstpage)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_stream_20150522.swf"
+                },
+                '17173_live_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream_(custom)?Out\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173.out.Live.swf"
+                }
+            },
+            _done: null,
+            get done() {
+                if(!this._done) {
+                    this._done = new Array();
+                }
+                return this._done;
+            },
+            addAnimations: function() {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = 'object,embed{\
+                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;\
+                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;\
+                -o-animation-duration:.001s;-o-animation-name:playerInserted;\
+                animation-duration:.001s;animation-name:playerInserted;}\
+                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}';
+                document.getElementsByTagName('head')[0].appendChild(style);
+            },
+            animationsHandler: function(e) {
+                if(e.animationName === 'playerInserted') {
+                    this.replace(e.target);
+                }
+            },
+            replace: function(elem) {
+                if(this.done.indexOf(elem) != -1) return;
+                this.done.push(elem);
+                var player = elem.data || elem.src;
+                if(!player) return;
+                var i, find, replace = false;
+                for(i in this.rules) {
+                    find = this.rules[i]['find'];
+                    if(find.test(player)) {
+                        replace = this.rules[i]['replace'];
+                        if('function' === typeof this.rules[i]['preHandle']) {
+                            this.rules[i]['preHandle'].bind(this, elem, find, replace, player)();
+                        }else{
+                            this.reallyReplace.bind(this, elem, find, replace)();
+                        }
+                        break;
+                    }
+                }
+            },
+            reallyReplace: function(elem, find, replace) {
+                elem.data && (elem.data = elem.data.replace(find, replace)) || elem.src && ((elem.src = elem.src.replace(find, replace)) && (elem.style.display = 'block'));
+                var b = elem.querySelector("param[name='movie']");
+                this.reloadPlugin(elem);
+            },
+            reloadPlugin: function(elem) {
+                var nextSibling = elem.nextSibling;
+                var parentNode = elem.parentNode;
+                parentNode.removeChild(elem);
+                var newElem = elem.cloneNode(true);
+                this.done.push(newElem);
+                if(nextSibling) {
+                    parentNode.insertBefore(newElem, nextSibling);
+                } else {
+                    parentNode.appendChild(newElem);
+                }
+            },
+            init: function() {
+                var handler = this.animationsHandler.bind(this);
+                document.body.addEventListener('webkitAnimationStart', handler, false);
+                document.body.addEventListener('msAnimationStart', handler, false);
+                document.body.addEventListener('oAnimationStart', handler, false);
+                document.body.addEventListener('animationstart', handler, false);
+                this.addAnimations();
+            }
+        };
+        new A().init();
+    })();
+}
+//remove baidu search ad
+if(document.URL.indexOf('www.baidu.com') >= 0){
+    if(document && document.getElementsByTagName && document.getElementById && document.body){
+        var aa = function(){
+            var all = document.body.querySelectorAll("#content_left div,#content_left table");
+            for(var i = 0; i < all.length; i++){
+                if(/display:\s?(table|block)\s!important/.test(all[i].getAttribute("style"))){all[i].style.display= "none";all[i].style.visibility='hidden';}
+            }
+            all = document.body.querySelectorAll('.result.c-container[id="1"]');
+            //if(all.length == 1) return;
+            for(var i = 0; i < all.length; i++){
+                if(all[i].innerHTML && all[i].innerHTML.indexOf('广告')>-1){
+                    all[i].style.display= "none";all[i].style.visibility='hidden';
+                }
+            }
+        }
+        aa();
+        document.getElementById('wrapper_wrapper').addEventListener('DOMSubtreeModified',aa)
+    };
+}
+//remove sohu video ad
+if (document.URL.indexOf("tv.sohu.com") >= 0){
+    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//remove 56.com video ad
+if (document.URL.indexOf("56.com") >= 0){
+    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//fore iqiyi enable html5 player function
+if (document.URL.indexOf("iqiyi.com") >= 0){
+    if (document.cookie.indexOf("player_forcedType=h5_VOD")==-1){
+        document.cookie='player_forcedType=h5_VOD'
+        if(localStorage.reloadTime && Date.now() - parseInt(localStorage.reloadTime)<60000){
+            console.log('no reload')
+        }else{
+            location.reload()
+            localStorage.reloadTime = Date.now();
+        }
+    }
+}
+</script><style type="text/css">object,embed{                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;                -o-animation-duration:.001s;-o-animation-name:playerInserted;                animation-duration:.001s;animation-name:playerInserted;}                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style></head>
+<body style="">
+<script async="" src="./超级酷炫的HTML5互动式程序员求职简历_files/analytics.js.下载"></script><script type="text/javascript" src="./超级酷炫的HTML5互动式程序员求职简历_files/jquery-1.9.1.min.js.下载"></script>
+<script type="text/javascript" src="./超级酷炫的HTML5互动式程序员求职简历_files/jquery-ui-1.10.2.custom.min.js.下载"></script>
+<script type="text/javascript" src="./超级酷炫的HTML5互动式程序员求职简历_files/detect-browser-device.js.下载"></script>
+<noscript>
+<div id="javascript-banner-container">
+  <div id="javascript-banner">
+    <div id="javascript-banner-left"></div>
+    <div id="javascript-banner-middle">
+      <div id="javascript-banner-text-a">请开启你的</div>
+      <div id="javascript-banner-text-b">JavaScript功能</div>
+    </div>
+    <div id="javascript-banner-right"></div>
+  </div>
+</div>
+</noscript>
+<div id="content" class="">
+<div id="preloader" class="displaynone" style="bottom: 100%;">
+<script type="text/javascript" src="./超级酷炫的HTML5互动式程序员求职简历_files/preloader-transparent-or-displaynone.js.下载"></script>
+<div id="preloader-banner-container">
+<div id="preloader-banner">
+<div id="preloader-banner-left"></div>
+<div id="preloader-banner-middle">
+<div id="preloader-banner-text-a">加载中</div>
+<div id="preloader-dots" class="preloader-dots-static"></div>
+</div>
+<div id="preloader-banner-right"></div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="./超级酷炫的HTML5互动式程序员求职简历_files/preloader.js.下载"></script>
+<div id="page" style="height: 27745px;"></div>
+<div id="container" class="">
+<script type="text/javascript" src="./超级酷炫的HTML5互动式程序员求职简历_files/container-transparent-or-displaynone.js.下载"></script>
+<div id="layer-vertical-1" class="layer-vertical" style="left: 2529px; bottom: 0px;">
+<div id="cloud-5" class="cloud"></div>
+<div id="cloud-6" class="cloud"></div>
+<div id="cloud-7" class="cloud"></div>
+<div id="cloud-8" class="cloud"></div>
+<div id="cloud-9" class="cloud"></div>
+</div>
+<div id="layer-vertical-2" class="layer-vertical" style="left: 10339px; bottom: 0px;">
+<div id="ground-and-grass-container-2">
+<div class="ground"></div>
+<div class="grass"></div>
+<div id="waterfall-1" class="waterfall"></div>
+<div id="waterfall-2" class="waterfall" style="opacity: 1;"></div>
+</div>
+</div>
+
+<div id="layer-horizontal-1" class="layer-horizontal" style="top: 0px; left: -61.0497px;">
+<div id="cloud-1" class="cloud"></div>
+<div id="cloud-2" class="cloud"></div>
+<div id="cloud-3" class="cloud"></div>
+<div id="cloud-4" class="cloud"></div>
+<div id="sea-layer-horizontal-1" class="sea">
+<div class="sea-seal"></div>
+</div>
+<div id="coral-big-1" class="coral-big" style="bottom: -70%;"></div>
+<div id="coral-big-2" class="coral-big" style="bottom: -70%;"></div>
+</div>
+<div id="layer-horizontal-2" class="layer-horizontal" style="top: 0px; left: -250.866px;">
+<div id="mountain-1" class="mountain"></div>
+<div id="mountain-2" class="mountain"></div>
+<div id="coral-1" class="coral-a"></div>
+<div id="coral-2" class="coral-b"></div>
+<div id="coral-3" class="coral-a"></div>
+<div id="crane-1" class="crane"></div>
+<div id="hangar">
+<div id="hangar-door"></div>
+<div id="hangar-window"></div>
+<div id="hangar-roof"></div>
+</div>
+<div id="crane-2" class="crane"></div>
+</div>
+<div id="layer-horizontal-3" class="layer-horizontal" style="top: 0px; left: -500px;">
+<div id="plants-container">
+<div id="plant-text-1" class="plant-text">完全精通</div>
+<div id="plant-text-2" class="plant-text">擅长领域</div>
+<div id="plant-text-3" class="plant-text">熟练掌握</div>
+<div id="plant-text-4" class="plant-text">熟悉</div>
+<div id="plant-text-5" class="plant-text">了解</div>
+<div id="plant-line-1" class="plant-line"></div>
+<div id="plant-line-2" class="plant-line"></div>
+<div id="plant-line-3" class="plant-line"></div>
+<div id="plant-line-4" class="plant-line"></div>
+<div id="plant-line-5" class="plant-line"></div>
+<div id="plant-1" class="plant" style="top: 100%;">
+<div class="plant-stalk"></div>
+<div class="plant-head-leaves"></div>
+</div>
+<div id="plant-2" class="plant" style="top: 100%;">
+<div class="plant-stalk"></div>
+<div class="plant-head-leaves"></div>
+</div>
+<div id="plant-3" class="plant" style="top: 100%;">
+<div class="plant-stalk"></div>
+<div class="plant-head-leaves"></div>
+</div>
+<div id="plant-4" class="plant" style="top: 100%;">
+<div class="plant-stalk"></div>
+<div class="plant-head-leaves"></div>
+</div>
+<div id="plant-ribbon-container">
+<div id="plant-ribbon-1" class="plant-ribbon">
+<div class="plant-ribbon-left"></div>
+<div class="plant-ribbon-middle">设计</div>
+<div class="plant-ribbon-right"></div>
+</div>
+<div id="plant-ribbon-2" class="plant-ribbon">
+<div class="plant-ribbon-left"></div>
+<div class="plant-ribbon-middle">做图</div>
+<div class="plant-ribbon-right"></div>
+</div>
+<div id="plant-ribbon-3" class="plant-ribbon">
+<div class="plant-ribbon-left"></div>
+<div class="plant-ribbon-middle">编码</div>
+<div class="plant-ribbon-right"></div>
+</div>
+<div id="plant-ribbon-4" class="plant-ribbon">
+<div class="plant-ribbon-left"></div>
+<div class="plant-ribbon-middle">动画</div>
+<div class="plant-ribbon-right"></div>
+</div>
+</div>
+<div class="ribbon-container">
+<div class="ribbon-relative">
+<div class="ribbon-left"></div>
+<div class="ribbon-middle">多领域设计技术</div>
+<div class="ribbon-right"></div>
+</div>
+</div>
+</div>
+<div id="elevation-1" class="elevation">
+<div class="ground"></div>
+<div class="grass"></div>
+</div>
+<div id="tree-9" class="tree-bright-a"></div>
+<div id="tree-10" class="tree-dark-c"></div>
+<div id="title-about"></div>
+<div id="tree-7" class="tree-dark-a"></div>
+<div id="tree-8" class="tree-bright-a"></div>
+<div id="gate-1" class="gate">
+<div id="gate-text-1" class="gate-text">第1关</div>
+</div>
+<div id="gate-2" class="gate">
+<div id="gate-text-2" class="gate-text">第2关</div>
+</div>
+<div id="nba-container">
+<div id="tree-20" class="tree-bright-b"></div>
+<div id="tree-21" class="tree-dark-d"></div>
+<div id="tree-22" class="tree-bright-b"></div>
+<div id="tree-23" class="tree-dark-b"></div>
+<div id="tree-24" class="tree-bright-e"></div>
+<div id="tree-25" class="tree-dark-b"></div>
+<div id="nba-rim-container">
+<div id="nba-rim"></div>
+</div>
+<div id="nba-board-1" class="nba-board-blue" style="bottom: 0px;">
+<div class="nba-text-container">
+<div class="nba-text">我</div>
+</div>
+</div>
+<div id="nba-board-2" class="nba-board-blue" style="bottom: 0px;">
+<div class="nba-text-container">
+<div class="nba-text">最</div>
+</div>
+</div>
+<div id="nba-board-3" class="nba-board-blue" style="bottom: 0px;">
+<div class="nba-text-container">
+<div class="nba-text">爱</div>
+</div>
+</div>
+<div id="nba-board-4" class="nba-board-red" style="bottom: 0px;">
+<div class="nba-text-container">
+<div class="nba-text">打</div>
+</div>
+</div>
+<div id="nba-board-5" class="nba-board-red" style="bottom: 0px;">
+<div class="nba-text-container">
+<div class="nba-text">蓝</div>
+</div>
+</div>
+<div id="nba-board-6" class="nba-board-red" style="bottom: 0px;">
+<div class="nba-text-container">
+<div class="nba-text">球</div>
+</div>
+</div>
+<div id="nba-player-container" style="left: 1400px; bottom: 0px;">
+<div id="nba-player">
+<div id="nba-player-frame"></div>
+<div id="nba-player-eyes"></div>
+</div>
+</div>
+<div id="nba-ball" style="opacity: 0; left: 415px; bottom: 250px;"></div>
+<div class="ribbon-container">
+<div class="ribbon-relative">
+<div class="ribbon-left"></div>
+<div class="ribbon-middle">爱好运动</div>
+<div class="ribbon-right"></div>
+</div>
+</div>
+</div>
+<div id="buildings-container">
+<div id="tree-11" class="tree-bright-b"></div>
+<div id="tree-12" class="tree-dark-b"></div>
+<div id="tree-13" class="tree-bright-b"></div>
+<div id="tree-14" class="tree-dark-b"></div>
+<div id="tree-15" class="tree-bright-b"></div>
+<div id="tree-16" class="tree-dark-b"></div>
+<div id="tree-17" class="tree-bright-b"></div>
+<div id="tree-18" class="tree-dark-b"></div>
+<div id="tree-19" class="tree-bright-b"></div>
+<div id="building-1" class="building" style="left: 795px;">
+<div class="building-enemy-face-a">
+<div class="building-enemy-face-a-eyes"></div>
+</div>
+<div id="building-leg-container-1" class="building-leg-container-a">
+<div id="building-1-leg-frame" class="building-leg-frame-a"></div>
+</div>
+</div>
+<div id="building-2" class="building" style="left: 1100px;">
+<div class="building-enemy-face-b">
+<div class="building-enemy-face-b-eyes"></div>
+</div>
+<div id="building-leg-container-2" class="building-leg-container-b">
+<div id="building-2-leg-frame" class="building-leg-frame-b"></div>
+</div>
+</div>
+<div id="building-3" class="building" style="left: 1505px;">
+<div class="building-enemy-face-a">
+<div class="building-enemy-face-a-eyes"></div>
+</div>
+<div id="building-leg-container-3" class="building-leg-container-a">
+<div id="building-3-leg-frame" class="building-leg-frame-a"></div>
+</div>
+</div>
+<div class="ribbon-container">
+<div class="ribbon-relative">
+<div class="ribbon-left"></div>
+<div class="ribbon-middle">在纽约州生活和工作</div>
+<div class="ribbon-right"></div>
+</div>
+</div>
+</div>
+<div id="elevation-2" class="elevation">
+<div class="ground"></div>
+<div class="grass"></div>
+</div>
+<div id="ground-and-grass-container-1">
+<div class="ground"></div>
+<div class="grass"></div>
+</div>
+<div id="splash-container" style="left: 63.5px;">
+<div id="scroll-or-swipe-text-container-1" class="scroll-or-swipe-text-container" style="opacity: 0;">用鼠标中键滚轮控制，或用键盘向上向下键控制</div>
+<div id="scroll-or-swipe-text-container-2" class="scroll-or-swipe-text-container" style="opacity: 0;">Swipe from right to left</div>
+<div id="tree-5" class="tree-bright-d"></div>
+<div id="tree-6" class="tree-dark-b"></div>
+<div id="title-robby"></div>
+<div id="title-leonardi"></div>
+<div id="tree-1" class="tree-dark-c"></div>
+<div id="tree-2" class="tree-bright-e"></div>
+<div id="tree-3" class="tree-dark-b"></div>
+<div id="tree-4" class="tree-dark-a"></div>
+<div class="ribbon-container">
+<div class="ribbon-relative">
+<div class="ribbon-left"></div>
+<div class="ribbon-middle">程序员求职简历之</div>
+<div class="ribbon-right"></div>
+</div>
+</div>
+</div>
+<div id="sea-wave-1" class="sea-wave"></div>
+<div id="sea-1" class="sea">
+<div id="title-skills" class="title-skills-class" style="bottom: 0px;"></div>
+<div id="algae-1" class="algae-a" style="bottom: 0px;"></div>
+<div id="algae-2" class="algae-b" style="bottom: 0px;"></div>
+<div id="algae-3" class="algae-a" style="bottom: 0px;"></div>
+<div id="algae-4" class="algae-b" style="bottom: 0px;"></div>
+<div id="algae-5" class="algae-b" style="bottom: 0px;"></div>
+<div id="algae-6" class="algae-a" style="bottom: 0px;"></div>
+<div id="algae-7" class="algae-a" style="bottom: 0px;"></div>
+<div id="algae-8" class="algae-b" style="bottom: 0px;"></div>
+<div id="skill-1-container">
+<div class="skill-measurement-1 skill-measurement">
+<div class="skill-measurement-header">初学</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-2 skill-measurement">
+<div class="skill-measurement-header">熟悉</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-3 skill-measurement">
+<div class="skill-measurement-header">掌握</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-4 skill-measurement">
+<div class="skill-measurement-header">擅长</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-5 skill-measurement">
+<div class="skill-measurement-header">精通</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div id="fish-text-container">
+<div id="fish-ribbon-container-1" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">PHOTOSHOP</div>
+<div class="sea-ribbon-right"></div>
+</div>
+<div id="fish-ribbon-container-2" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">ILLUSTRATOR</div>
+<div class="sea-ribbon-right"></div>
+</div>
+<div id="fish-ribbon-container-3" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">DREAMWEAVER</div>
+<div class="sea-ribbon-right"></div>
+</div>
+<div id="fish-ribbon-container-4" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">FLASH</div>
+<div class="sea-ribbon-right"></div>
+</div>
+</div>
+<div id="fishes-container">
+<div class="fish" style="left: 900px; top: 0px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1050px; top: 0px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1200px; top: 0px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1350px; top: 0px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1500px; top: 0px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 900px; top: 100px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1050px; top: 100px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1200px; top: 100px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1350px; top: 100px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1500px; top: 100px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 900px; top: 200px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1050px; top: 200px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1200px; top: 200px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1350px; top: 200px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 900px; top: 300px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1050px; top: 300px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1200px; top: 300px;">
+<div class="fish-eyes"></div>
+</div>
+<div class="fish" style="left: 1350px; top: 300px;">
+<div class="fish-eyes"></div>
+</div>
+</div>
+</div>
+<div id="skill-2-container">
+<div class="skill-measurement-1 skill-measurement">
+<div class="skill-measurement-header">初学</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-2 skill-measurement">
+<div class="skill-measurement-header">熟悉</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-3 skill-measurement">
+<div class="skill-measurement-header">掌握</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-4 skill-measurement">
+<div class="skill-measurement-header">擅长</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-5 skill-measurement">
+<div class="skill-measurement-header">精通</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div id="crab-text-container">
+<div id="crab-ribbon-container-1" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">HTML</div>
+<div class="sea-ribbon-right"></div>
+</div>
+<div id="crab-ribbon-container-2" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">CSS</div>
+<div class="sea-ribbon-right"></div>
+</div>
+<div id="crab-ribbon-container-3" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">JAVASCRIPT</div>
+<div class="sea-ribbon-right"></div>
+</div>
+<div id="crab-ribbon-container-4" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">JQUERY</div>
+<div class="sea-ribbon-right"></div>
+</div>
+</div>
+<div id="crabs-container">
+<div class="crab" style="left: 900px; top: 0px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1050px; top: 0px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1200px; top: 0px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1350px; top: 0px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1500px; top: 0px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 900px; top: 100px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1050px; top: 100px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1200px; top: 100px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1350px; top: 100px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1500px; top: 100px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 900px; top: 200px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1050px; top: 200px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1200px; top: 200px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1350px; top: 200px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 900px; top: 300px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1050px; top: 300px;">
+<div class="crab-eyes"></div>
+</div>
+<div class="crab" style="left: 1200px; top: 300px;">
+<div class="crab-eyes"></div>
+</div>
+</div>
+</div>
+<div id="skill-3-container">
+<div class="skill-measurement-1 skill-measurement">
+<div class="skill-measurement-header">初学</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-2 skill-measurement">
+<div class="skill-measurement-header">熟悉</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-3 skill-measurement">
+<div class="skill-measurement-header">掌握</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-4 skill-measurement">
+<div class="skill-measurement-header">擅长</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div class="skill-measurement-5 skill-measurement">
+<div class="skill-measurement-header">精通</div>
+<div class="skill-measurement-line"></div>
+</div>
+<div id="turtle-text-container">
+<div id="turtle-ribbon-container-1" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">3D MAX</div>
+<div class="sea-ribbon-right"></div>
+</div>
+<div id="turtle-ribbon-container-2" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">BLENDER 3D</div>
+<div class="sea-ribbon-right"></div>
+</div>
+<div id="turtle-ribbon-container-3" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">CINEMA 4D</div>
+<div class="sea-ribbon-right"></div>
+</div>
+<div id="turtle-ribbon-container-4" class="sea-ribbon-container">
+<div class="sea-ribbon-left"></div>
+<div class="sea-ribbon-middle">AFTER EFFECTS</div>
+<div class="sea-ribbon-right"></div>
+</div>
+</div>
+<div id="turtles-container">
+<div class="turtle" style="left: 900px; top: 0px;">
+<div class="turtle-eyes"></div>
+</div>
+<div class="turtle" style="left: 1050px; top: 0px;">
+<div class="turtle-eyes"></div>
+</div>
+<div class="turtle" style="left: 1200px; top: 0px;">
+<div class="turtle-eyes"></div>
+</div>
+<div class="turtle" style="left: 900px; top: 100px;">
+<div class="turtle-eyes"></div>
+</div>
+<div class="turtle" style="left: 1050px; top: 100px;">
+<div class="turtle-eyes"></div>
+</div>
+<div class="turtle" style="left: 900px; top: 200px;">
+<div class="turtle-eyes"></div>
+</div>
+<div class="turtle" style="left: 1050px; top: 200px;">
+<div class="turtle-eyes"></div>
+</div>
+<div class="turtle" style="left: 900px; top: 300px;">
+<div class="turtle-eyes"></div>
+</div>
+<div class="turtle" style="left: 1050px; top: 300px;">
+<div class="turtle-eyes"></div>
+</div>
+</div>
+</div>
+<div id="bubble-container">
+<div id="bubble" style="opacity: 0;"></div>
+</div>
+</div>
+<div id="sea-floor"></div>
+<div id="ribbon-2-1" class="ribbon-absolute">
+<div class="ribbon-left"></div>
+<div class="ribbon-middle">图形软件和Web开发软件</div>
+<div class="ribbon-right"></div>
+</div>
+<div id="ribbon-2-2" class="ribbon-absolute">
+<div class="ribbon-left"></div>
+<div class="ribbon-middle">编程语言和脚本语言</div>
+<div class="ribbon-right"></div>
+</div>
+<div id="ribbon-2-3" class="ribbon-absolute">
+<div class="ribbon-left"></div>
+<div class="ribbon-middle">3D软件和视频软件</div>
+<div class="ribbon-right"></div>
+</div>
+<div id="panel-and-floor-container">
+<div id="panel"></div>
+<div id="floor"></div>
+</div>
+<div id="title-experience"></div>
+<div id="boxes"></div>
+<div id="experience-1-container">
+<div class="chain-block-and-string-container" style="left: 255px; bottom: 868.2px;">
+<div class="chain-block-string"></div>
+<div class="chain-block"></div>
+</div>
+<div id="experience-text-container-1" class="experience-text-container" style="bottom: 595.2px;">
+<div class="experience-text-a">2005年5月 - 2006年2月</div>
+<div class="experience-text-b">美国在线</div>
+<div class="experience-text-d">在美国在线音乐板块设计广告推广娱乐节目。</div>
+</div>
+<div id="robot" style="left: 1000px;">
+<div id="robot-body"></div>
+<div id="robot-hand-left">
+<div class="robot-hand-a" style="opacity: 1;"></div>
+<div class="robot-hand-b" style="opacity: 0;"></div>
+<div class="robot-hand-c" style="opacity: 0;"></div>
+<div class="robot-hand-d" style="opacity: 0;"></div>
+</div>
+<div id="robot-hand-right">
+<div class="robot-hand-a" style="opacity: 1;"></div>
+<div class="robot-hand-b" style="opacity: 0;"></div>
+<div class="robot-hand-c" style="opacity: 0;"></div>
+<div class="robot-hand-d" style="opacity: 0;"></div>
+</div>
+<div id="piechart-aol" class="piechart">
+<div class="piechart-back"></div>
+<div id="piechart-aol-text-graphic-1" class="piechart-text-c" style="opacity: 0;">美工</div>
+<div id="piechart-aol-text-graphic-2" class="piechart-text-d" style="opacity: 0;">100%</div>
+</div>
+</div>
+<div class="ribbon-container">
+<div class="ribbon-relative">
+<div class="ribbon-left"></div>
+<div class="ribbon-middle">工作经验 1</div>
+<div class="ribbon-right"></div>
+</div>
+</div>
+</div>
+<div id="elevation-3" class="elevation">
+<div class="elevation-box"></div>
+<div class="elevation-floor"></div>
+</div>
+<div id="experience-2-container">
+<div class="chain-block-and-string-container" style="left: 255px; bottom: 946.2px;">
+<div class="chain-block-string"></div>
+<div class="chain-block"></div>
+</div>
+<div id="experience-text-container-2" class="experience-text-container" style="bottom: 595.2px;">
+<div class="experience-text-a">2006年4月 - 2010年4月</div>
+<div class="experience-text-b">INCOGNITO DIGITAL公司</div>
+<div class="experience-text-c">设计和开发多个在线广告项目，包括富媒体，条幅，登录页和微网站。</div>
+</div>
+<div id="squid" style="left: 1000px;">
+<div id="squid-hand-open-1" class="squid-hand-open" style="opacity: 1;"></div>
+<div id="squid-hand-open-2" class="squid-hand-open" style="opacity: 1;"></div>
+<div id="squid-hand-open-3" class="squid-hand-open" style="opacity: 1;"></div>
+<div id="squid-hand-open-4" class="squid-hand-open" style="opacity: 1;"></div>
+<div id="squid-hand-close-1" class="squid-hand-close" style="opacity: 0;"></div>
+<div id="squid-hand-close-2" class="squid-hand-close" style="opacity: 0;"></div>
+<div id="squid-hand-close-3" class="squid-hand-close" style="opacity: 0;"></div>
+<div id="squid-hand-close-4" class="squid-hand-close" style="opacity: 0;"></div>
+<div id="squid-body"></div>
+<div id="piechart-incognito" class="piechart">
+<div class="piechart-back"></div>
+<div id="piechart-incognito-front" style="opacity: 0;"></div>
+<div id="piechart-incognito-text-graphic-1" class="piechart-text-a" style="opacity: 0;">美工</div>
+<div id="piechart-incognito-text-graphic-2" class="piechart-text-b" style="opacity: 0;">15%</div>
+<div id="piechart-incognito-text-animation-1" class="piechart-text-c" style="opacity: 0;">动画</div>
+<div id="piechart-incognito-text-animation-2" class="piechart-text-d" style="opacity: 0;">70%</div>
+<div id="piechart-incognito-text-code-1" class="piechart-text-a" style="opacity: 0;">编码</div>
+<div id="piechart-incognito-text-code-2" class="piechart-text-b" style="opacity: 0;">15%</div>
+</div>
+</div>
+<div class="ribbon-container">
+<div class="ribbon-relative">
+<div class="ribbon-left"></div>
+<div class="ribbon-middle">工作经历 2</div>
+<div class="ribbon-right"></div>
+</div>
+</div>
+</div>
+<div id="elevation-4" class="elevation">
+<div class="elevation-box"></div>
+<div class="elevation-floor"></div>
+</div>
+<div id="experience-3-container">
+<div class="chain-block-and-string-container" style="left: 255px; bottom: 892.2px;">
+<div class="chain-block-string"></div>
+<div class="chain-block"></div>
+</div>
+<div id="experience-text-container-3" class="experience-text-container" style="bottom: 595.2px;">
+<div class="experience-text-a">2010年8月 - 目前</div>
+<div class="experience-text-b">福克斯新闻</div>
+<div class="experience-text-e">设计和开发网站，包括为福克斯新闻网开发静态、动画和交互式图形内容。</div>
+</div>
+<div id="alien" style="left: 900px;">
+<div id="alien-body"></div>
+<div id="alien-steer"></div>
+<div id="alien-ship"></div>
+<div id="piechart-foxnews" class="piechart">
+<div class="piechart-back"></div>
+<div id="piechart-foxnews-front" style="opacity: 0;"></div>
+<div id="piechart-foxnews-text-graphic-1" class="piechart-text-c" style="opacity: 0;">美工</div>
+<div id="piechart-foxnews-text-graphic-2" class="piechart-text-d" style="opacity: 0;">70%</div>
+<div id="piechart-foxnews-text-animation-1" class="piechart-text-a" style="opacity: 0;">动画</div>
+<div id="piechart-foxnews-text-animation-2" class="piechart-text-b" style="opacity: 0;">15%</div>
+<div id="piechart-foxnews-text-code-1" class="piechart-text-a" style="opacity: 0;">编码</div>
+<div id="piechart-foxnews-text-code-2" class="piechart-text-b" style="opacity: 0;">15%</div>
+</div>
+</div>
+<div class="ribbon-container">
+<div class="ribbon-relative">
+<div class="ribbon-left"></div>
+<div class="ribbon-middle">工作经历 3</div>
+<div class="ribbon-right"></div>
+</div>
+</div>
+</div>
+<div id="gate-3" class="gate">
+<div id="gate-text-3" class="gate-text">第3关</div>
+</div>
+<div id="title-awards-and"></div>
+<div id="title-publication"></div>
+<div id="gate-4" class="gate">
+<div id="gate-text-4" class="gate-text">第4关</div>
+</div>
+<div id="dock-column"></div>
+<div id="sea-wave-2" class="sea-wave"></div>
+<div id="sea-2" class="sea"></div>
+<div id="dock-floor"></div>
+</div>
+<div id="layer-vertical-3" class="layer-vertical" style="height: 6522px; left: 20590px; bottom: 0px;">
+<div id="banners-container" style="bottom: 744px;">
+<div class="banner">
+<div class="banner-top-b"></div>
+<div class="banner-middle-b">
+<div class="banner-text-a">2013年11月14日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">thefwa.com</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">个人宣传页</div>
+<div class="banner-button"> <a href="http://www.thefwa.com/site/robby-leonardi" target="_blank"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/banner-button.png"> </a> </div>
+</div>
+<div class="banner-bottom-b"></div>
+</div>
+<div class="banner">
+<div class="banner-top-a"></div>
+<div class="banner-middle-a">
+<div class="banner-text-a">2013年11月29日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">awwwards</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">个人宣传页</div>
+<div class="banner-button"> <a href="http://www.awwwards.com/web-design-awards/robby-leonardi" target="_blank"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/banner-button.png"> </a> </div>
+</div>
+<div class="banner-bottom-a"></div>
+</div>
+<div class="banner">
+<div class="banner-top-b"></div>
+<div class="banner-middle-b">
+<div class="banner-text-a">2013年11月7日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">businessinsider</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">文章发表</div>
+<div class="banner-button"> <a href="http://www.businessinsider.com/web-designer-levels-up-his-resume-as-an-interactive-video-game-2013-11" target="_blank"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/banner-button.png"> </a> </div>
+</div>
+<div class="banner-bottom-b"></div>
+</div>
+<div class="banner">
+<div class="banner-top-a"></div>
+<div class="banner-middle-a">
+<div class="banner-text-a">2013年10月18日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">cnet.com</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">文章发表</div>
+<div class="banner-button"> <a href="http://news.cnet.com/8301-17938_105-57609630-1/side-scrolling-mario-inspired-resume-rocks-the-job-hunt/" target="_blank"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/banner-button.png"> </a> </div>
+</div>
+<div class="banner-bottom-a"></div>
+</div>
+<div class="banner">
+<div class="banner-top-b"></div>
+<div class="banner-middle-b">
+<div class="banner-text-a">2013年10月25日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">mashable</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">文章发表</div>
+<div class="banner-button"> <a href="http://mashable.com/2013/10/25/super-mario-bros-resume/" target="_blank"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/banner-button.png"> </a> </div>
+</div>
+<div class="banner-bottom-b"></div>
+</div>
+<div class="banner">
+<div class="banner-top-a"></div>
+<div class="banner-middle-a">
+<div class="banner-text-a">2013年10月25日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">fastcompany</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">发表文章</div>
+<div class="banner-button"> <a href="http://www.fastcompany.com/3020669/fast-feed/resume-writers-scroll-through-this-super-mario-esque-platform-game-and-weep" target="_blank"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/banner-button.png"> </a> </div>
+</div>
+<div class="banner-bottom-a"></div>
+</div>
+<div class="banner">
+<div class="banner-top-b"></div>
+<div class="banner-middle-b">
+<div class="banner-text-a">2013年10月21日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">CSS设计比赛</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">获胜者</div>
+<div class="banner-button"> <a href="http://www.cssdesignawards.com/sites/robby-leonardi/23615/" target="_blank"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/banner-button.png"> </a> </div>
+</div>
+<div class="banner-bottom-b"></div>
+</div>
+<div class="banner">
+<div class="banner-top-a"></div>
+<div class="banner-middle-a">
+<div class="banner-text-a">2013年10月18日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">csswinner</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">个人宣传页</div>
+<div class="banner-button"> <a href="http://www.csswinner.com/details/robby-leonardi/5910/" target="_blank"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/banner-button.png"> </a> </div>
+ </div>
+<div class="banner-bottom-a"></div>
+</div>
+<div class="banner">
+<div class="banner-top-b"></div>
+<div class="banner-middle-b">
+<div class="banner-text-a">2013年4月10日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">在线杂志</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">Net Awards 2013 - 最佳在线个人简历奖</div>
+<div class="banner-button"> <a href="http://www.creativebloq.com/netmag/net-awards-2013-best-online-portfolio-4135712" target="_blank"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/banner-button.png"> </a> </div>
+</div>
+<div class="banner-bottom-b"></div>
+</div>
+<div class="banner">
+<div class="banner-top-a"></div>
+<div class="banner-middle-a">
+<div class="banner-text-a">September 10, 2012年9月10日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">creativebloq</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">作品发表 - 45 Examples of CSS</div>
+<div class="banner-button"> <a href="http://www.creativebloq.com/web-design/examples-css-912710" target="_blank"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/banner-button.png"> </a> </div>
+</div>
+<div class="banner-bottom-a"></div>
+</div>
+<div class="banner">
+<div class="banner-top-b"></div>
+<div class="banner-middle-b">
+<div class="banner-text-a">2012年9月1日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">Web设计者杂志</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">Issue 200 - Portfolio Section</div>
+</div>
+<div class="banner-bottom-b"></div>
+</div>
+<div class="banner">
+<div class="banner-top-a"></div>
+<div class="banner-middle-a">
+<div class="banner-text-a">2012年7月1日</div>
+<div class="banner-line"></div>
+<div class="banner-text-b">在线杂志</div>
+<div class="banner-line"></div>
+<div class="banner-text-c">Issue 230 - CSS Gallery</div>
+</div>
+<div class="banner-bottom-a"></div>
+</div>
+</div>
+</div>
+<div id="fireworks-container" style="top: -5778px; left: 20590px;">
+<div id="firework-container-1" class="firework-container">
+<div class="firework" style="opacity: 1;"><svg version="1.2" baseProfile="tiny" width="100%" height="100%"></svg></div>
+</div>
+<div id="firework-container-2" class="firework-container">
+<div class="firework" style="opacity: 1;"><svg version="1.2" baseProfile="tiny" width="100%" height="100%"></svg></div>
+</div>
+<div id="firework-container-3" class="firework-container">
+<div class="firework" style="opacity: 1;"><svg version="1.2" baseProfile="tiny" width="100%" height="100%"></svg></div>
+</div>
+<div id="firework-container-4" class="firework-container">
+<div class="firework" style="opacity: 1;"><svg version="1.2" baseProfile="tiny" width="100%" height="100%"></svg></div>
+</div>
+<div id="firework-container-5" class="firework-container">
+<div class="firework" style="opacity: 1;"><svg version="1.2" baseProfile="tiny" width="100%" height="100%"></svg></div>
+</div>
+<div id="firework-container-6" class="firework-container">
+<div class="firework" style="opacity: 1;"><svg version="1.2" baseProfile="tiny" width="100%" height="100%"></svg></div>
+</div>
+</div>
+<div id="robby-container" style="left: 50%; bottom: 20%;">
+<div id="robby">
+<div id="robby-slides" style="left: 0px; top: 0px;"></div>
+<div id="robby-eyes-close" style="opacity: 0; left: 90px;"></div>
+</div>
+</div>
+<div id="balloon" style="left: 21095px; bottom: 148.8px;"></div>
+<div id="contact-container" style="top: -5778px; left: 20590px;">
+<div id="contact-center">
+<div id="title-contact"></div>
+<div id="contact-box">
+<div id="contact-box-email">
+<input type="text" name="email-address" id="email-address" maxlength="75">
+</div>
+<div id="contact-box-subject">
+<input type="text" name="email-subject" id="email-subject" maxlength="150">
+</div>
+<div id="contact-box-message">
+<textarea name="email-message" id="email-message"></textarea>
+</div>
+</div>
+<div id="contact-button">
+<input type="image" src="./超级酷炫的HTML5互动式程序员求职简历_files/contact-button.png" value="submit" id="send-email" name="send-email">
+</div>
+</div>
+<div id="social-container" style="top: 80%;">
+<div id="social-top" style="opacity: 0;"></div>
+<div id="social-middle" class="a-share2" style="opacity: 0;">
+<div id="social-dribbble" class="social-icon" style="opacity: 0;"> <a data-app="tsina" href="javascript:void(0);"> <img width="60" height="60" src="./超级酷炫的HTML5互动式程序员求职简历_files/tsina.png"> </a> </div>
+<div id="social-print" class="social-icon" style="opacity: 0;"> <a data-app="qzone" href="javascript:void(0);"> <img width="60" height="60" src="./超级酷炫的HTML5互动式程序员求职简历_files/qzone.png"> </a> </div>
+<div id="social-facebook" class="social-icon" style="opacity: 0;"> <a data-app="facebook" href="javascript:void(0);"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/social-facebook.png"> </a> </div>
+<div id="social-twitter" class="social-icon" style="opacity: 0;"> <a data-app="twitter" href="javascript:void(0);"> <img src="./超级酷炫的HTML5互动式程序员求职简历_files/social-twitter.png"> </a> </div>
+</div>
+<div id="social-bottom" style="opacity: 0;"></div>
+</div>
+<div class="contact-confirmation-container" style="left: 963.5px; top: 225.2px;">
+<div class="contact-confirmation">
+<div class="contact-confirmation-rectangle" style="opacity: 0;"></div>
+<div class="contact-confirmation-triangle" style="opacity: 0;"></div>
+<div class="contact-confirmation-title-b" style="opacity: 0;">错误</div>
+<div class="contact-confirmation-text-b" style="opacity: 0;">Please enter a valid email address!</div>
+</div>
+</div>
+<div class="contact-confirmation-container" style="left: 963.5px; top: 225.2px;">
+<div class="contact-confirmation">
+<div class="contact-confirmation-rectangle" style="opacity: 0;"></div>
+<div class="contact-confirmation-triangle" style="opacity: 0;"></div>
+<div class="contact-confirmation-title-b" style="opacity: 0;">错误</div>
+<div class="contact-confirmation-text-b" style="opacity: 0;">Please fill out all of the information!</div>
+</div>
+</div>
+<div class="contact-confirmation-container" style="left: 963.5px; top: 225.2px;">
+<div class="contact-confirmation">
+<div class="contact-confirmation-rectangle" style="opacity: 0;"></div>
+<div class="contact-confirmation-triangle" style="opacity: 0;"></div>
+<div class="contact-confirmation-text-d" style="opacity: 0;">Sending...</div>
+</div>
+</div>
+<div class="contact-confirmation-container" style="left: 963.5px; top: 225.2px;">
+<div class="contact-confirmation">
+<div class="contact-confirmation-rectangle" style="opacity: 0;"></div>
+<div class="contact-confirmation-triangle" style="opacity: 0;"></div>
+<div class="contact-confirmation-title-b" style="opacity: 0;">ERROR</div>
+<div class="contact-confirmation-text-c" style="opacity: 0;">Something wrong. Please try again!</div>
+</div>
+</div>
+<div class="contact-confirmation-container" style="left: 963.5px; top: 225.2px;">
+<div class="contact-confirmation">
+<div class="contact-confirmation-rectangle" style="opacity: 0;"></div>
+<div class="contact-confirmation-triangle" style="opacity: 0;"></div>
+<div class="contact-confirmation-title-a" style="opacity: 0;">THANK YOU</div>
+<div class="contact-confirmation-text-a" style="opacity: 0;">Your message has been sent. I will get back to you as soon as possible!</div>
+</div>
+</div>
+<div id="contact-cloud-top"></div>
+<div id="contact-cloud-bottom"></div>
+<div id="contact-cloud-middle">
+<div id="contact-cloud-seal-top"></div>
+<div id="contact-cloud-seal-bottom"></div>
+</div>
+</div>
+
+</div>
+</div>
+<script type="text/javascript" src="./超级酷炫的HTML5互动式程序员求职简历_files/email.js.下载"></script>
+<script type="text/javascript" src="./超级酷炫的HTML5互动式程序员求职简历_files/main.js.下载"></script>
+
+
+
+<script type="text/javascript" src="./超级酷炫的HTML5互动式程序员求职简历_files/jiathis_r.js.下载" charset="utf-8"></script>
+
+<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-2477810-34', 'auto');  ga('send', 'pageview');</script> <span id="pageendflag"></span> <script type="text/javascript" src="./超级酷炫的HTML5互动式程序员求职简历_files/4af1eab42366e783159da991d8761b93PdK0SNri.js.下载"></script>
+
+
+<audio controls="controls" style="display: none;"></audio></body><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></html>
